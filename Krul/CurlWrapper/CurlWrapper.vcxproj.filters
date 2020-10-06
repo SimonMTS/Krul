@@ -29,9 +29,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CurlWrapper__.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CurlWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

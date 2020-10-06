@@ -97,7 +97,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\libcurl_git\curl\builds\libcurl-vc-x86-release-static-ipv6-sspi-schannel\lib\libcurl_a.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>../CurlWrapper/libcurl_a.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -156,6 +156,9 @@
   <ItemGroup>
     <ProjectReference Include="..\CurlWrapper\CurlWrapper.vcxproj">
       <Project>{616ae8e6-4e10-4f22-ba68-b8ceb3d89d24}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Interpreter\Interpreter.vcxproj">
+      <Project>{295ee06e-ffdd-4a73-a196-2f2a26137605}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

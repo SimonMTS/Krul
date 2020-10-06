@@ -151,17 +151,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="AddNumbersFromStack.h" />
+    <ClInclude Include="DecrementNumberFromStack.h" />
+    <ClInclude Include="DivideNumbersFromStack.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="IncrementNumberFromStack.h" />
+    <ClInclude Include="Interpreter.h" />
+    <ClInclude Include="MakeAbsoluteNumberFromStack.h" />
+    <ClInclude Include="ModuloNumbersFromStack.h" />
+    <ClInclude Include="MultiplyNumbersFromStack.h" />
+    <ClInclude Include="NegateNumberFromStack.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PushNumberToStack.h" />
+    <ClInclude Include="SubtractNumbersFromStack.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="AddNumbersFromStack.cpp" />
+    <ClCompile Include="DecrementNumberFromStack.cpp" />
+    <ClCompile Include="DivideNumbersFromStack.cpp" />
+    <ClCompile Include="IncrementNumberFromStack.cpp" />
     <ClCompile Include="Interpreter.cpp" />
+    <ClCompile Include="MakeAbsoluteNumberFromStack.cpp" />
+    <ClCompile Include="ModuloNumbersFromStack.cpp" />
+    <ClCompile Include="MultiplyNumbersFromStack.cpp" />
+    <ClCompile Include="NegateNumberFromStack.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PushNumberToStack.cpp" />
+    <ClCompile Include="SubtractNumbersFromStack.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

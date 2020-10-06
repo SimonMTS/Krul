@@ -2,5 +2,8 @@
 Krul/Krul/Debug/
 Krul/Debug/
 Krul/CurlWrapper/Debug/
+Krul/Interpreter/Debug/
+Krul/packages/
+Krul/UnitTests/Debug/
 
 .vs
