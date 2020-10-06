@@ -12,10 +12,10 @@ int main(int argc, char* argv[])
 
     while (true) {
         code = curl.getUrl("https://www.swiftcoder.nl/cpp1/" + url);
-        code = "15\n23\nadd\n";
-        //std::cout << code;
+        //code = "\\teststring\n";
+        std::cout << code;
 
-        url = Krul.Interpret(code);
+        //url = Krul.Interpret(code);
         std::cout << url << "\n";
 
         break; // if ( endCondition ) ...

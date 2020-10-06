@@ -152,11 +152,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
+    <ClInclude Include="AddNewLineToStringFromStack.h" />
     <ClInclude Include="AddNumbersFromStack.h" />
+    <ClInclude Include="ConcatenateStringFromStack.h" />
     <ClInclude Include="DecrementNumberFromStack.h" />
     <ClInclude Include="DivideNumbersFromStack.h" />
+    <ClInclude Include="DuplicateStringFromStack.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GetLengthOfStringFromStack.h" />
     <ClInclude Include="IncrementNumberFromStack.h" />
+    <ClInclude Include="IndexStringFromStack.h" />
     <ClInclude Include="Interpreter.h" />
     <ClInclude Include="MakeAbsoluteNumberFromStack.h" />
     <ClInclude Include="ModuloNumbersFromStack.h" />
@@ -164,14 +169,23 @@
     <ClInclude Include="NegateNumberFromStack.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PushNumberToStack.h" />
+    <ClInclude Include="PushStringToStack.h" />
+    <ClInclude Include="ReverseStringFromStack.h" />
+    <ClInclude Include="RotateStringFromStack.h" />
+    <ClInclude Include="SubstringStringFromStack.h" />
     <ClInclude Include="SubtractNumbersFromStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
+    <ClCompile Include="AddNewLineToStringFromStack.cpp" />
     <ClCompile Include="AddNumbersFromStack.cpp" />
+    <ClCompile Include="ConcatenateStringFromStack.cpp" />
     <ClCompile Include="DecrementNumberFromStack.cpp" />
     <ClCompile Include="DivideNumbersFromStack.cpp" />
+    <ClCompile Include="DuplicateStringFromStack.cpp" />
+    <ClCompile Include="GetLengthOfStringFromStack.cpp" />
     <ClCompile Include="IncrementNumberFromStack.cpp" />
+    <ClCompile Include="IndexStringFromStack.cpp" />
     <ClCompile Include="Interpreter.cpp" />
     <ClCompile Include="MakeAbsoluteNumberFromStack.cpp" />
     <ClCompile Include="ModuloNumbersFromStack.cpp" />
@@ -184,6 +198,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PushNumberToStack.cpp" />
+    <ClCompile Include="PushStringToStack.cpp" />
+    <ClCompile Include="ReverseStringFromStack.cpp" />
+    <ClCompile Include="RotateStringFromStack.cpp" />
+    <ClCompile Include="SubstringStringFromStack.cpp" />
     <ClCompile Include="SubtractNumbersFromStack.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
