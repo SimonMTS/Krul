@@ -1,16 +1,18 @@
 #include "pch.h"
 #include "ReverseStringFromStack.h"
 
-void ReverseStringFromStack::Do(std::vector<std::string>& stack) {
-	std::string string = stack.back();
-	stack.pop_back();
+int ReverseStringFromStack::Do(MemoryData& data, int i) {
+	std::string string = data.stack.back();
+	data.stack.pop_back();
 
 	std::reverse(string.begin(), string.end());
 
-	stack.push_back(string);
+	data.stack.push_back(string);
+
+	return i;
 }
 
-std::unique_ptr<Action> ReverseStringFromStack::Match(std::string line) {
+std::unique_ptr<Action> ReverseStringFromStack::Match(MemoryData & data, int i, std::string line) {
 	std::regex e("^rev$");
 
 	if (std::regex_match(line, e)) {

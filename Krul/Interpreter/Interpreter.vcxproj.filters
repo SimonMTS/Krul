@@ -19,6 +19,36 @@
     <Filter Include="Header Files\Actions">
       <UniqueIdentifier>{3b9306bb-0543-4fd3-b744-a8cda5321660}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Actions\IntegerActions">
+      <UniqueIdentifier>{a5d49bf6-5137-4921-8a23-d64215e484ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actions\StringActions">
+      <UniqueIdentifier>{650b4fde-4381-4dd1-8e03-bbce4a350cb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actions\IntegerActions">
+      <UniqueIdentifier>{7e90d28b-ab01-43c9-8b8e-d49bbd11d0b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actions\StringActions">
+      <UniqueIdentifier>{263c203f-1dff-48a6-8e54-2a8fd0277225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actions\ValueActions">
+      <UniqueIdentifier>{48f8bd3f-08d3-4dea-87e7-0120dd49e6f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actions\ValueActions">
+      <UniqueIdentifier>{73ae8d14-8246-46f5-a90e-a79d866d0a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actions\JumpActions">
+      <UniqueIdentifier>{f3b5f492-2897-46e2-874c-073de8deeb49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actions\JumpActions">
+      <UniqueIdentifier>{e691c508-f5a7-4181-9647-42dae57fea42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actions\Function&amp;EndActions">
+      <UniqueIdentifier>{19af3994-d66d-4f29-8c56-a287e5e36e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actions\Function&amp;EndActions">
+      <UniqueIdentifier>{31c12342-2627-4561-be64-614593a48a46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -33,62 +63,107 @@
     <ClInclude Include="Action.h">
       <Filter>Header Files\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="PushNumberToStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="AddNumbersFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
     <ClInclude Include="SubtractNumbersFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="MultiplyNumbersFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="DivideNumbersFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuloNumbersFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="MakeAbsoluteNumberFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="IncrementNumberFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="DecrementNumberFromStack.h">
-      <Filter>Header Files\Actions</Filter>
+      <Filter>Header Files\Actions\IntegerActions</Filter>
     </ClInclude>
     <ClInclude Include="NegateNumberFromStack.h">
-      <Filter>Header Files\Actions</Filter>
+      <Filter>Header Files\Actions\IntegerActions</Filter>
     </ClInclude>
-    <ClInclude Include="PushStringToStack.h">
-      <Filter>Header Files\Actions</Filter>
+    <ClInclude Include="MultiplyNumbersFromStack.h">
+      <Filter>Header Files\Actions\IntegerActions</Filter>
     </ClInclude>
-    <ClInclude Include="DuplicateStringFromStack.h">
-      <Filter>Header Files\Actions</Filter>
+    <ClInclude Include="ModuloNumbersFromStack.h">
+      <Filter>Header Files\Actions\IntegerActions</Filter>
     </ClInclude>
-    <ClInclude Include="ReverseStringFromStack.h">
-      <Filter>Header Files\Actions</Filter>
+    <ClInclude Include="MakeAbsoluteNumberFromStack.h">
+      <Filter>Header Files\Actions\IntegerActions</Filter>
+    </ClInclude>
+    <ClInclude Include="IncrementNumberFromStack.h">
+      <Filter>Header Files\Actions\IntegerActions</Filter>
+    </ClInclude>
+    <ClInclude Include="DivideNumbersFromStack.h">
+      <Filter>Header Files\Actions\IntegerActions</Filter>
+    </ClInclude>
+    <ClInclude Include="DecrementNumberFromStack.h">
+      <Filter>Header Files\Actions\IntegerActions</Filter>
+    </ClInclude>
+    <ClInclude Include="AddNumbersFromStack.h">
+      <Filter>Header Files\Actions\IntegerActions</Filter>
     </ClInclude>
     <ClInclude Include="SubstringStringFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="AddNewLineToStringFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="ConcatenateStringFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="GetLengthOfStringFromStack.h">
-      <Filter>Header Files\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="IndexStringFromStack.h">
-      <Filter>Header Files\Actions</Filter>
+      <Filter>Header Files\Actions\StringActions</Filter>
     </ClInclude>
     <ClInclude Include="RotateStringFromStack.h">
-      <Filter>Header Files\Actions</Filter>
+      <Filter>Header Files\Actions\StringActions</Filter>
+    </ClInclude>
+    <ClInclude Include="ReverseStringFromStack.h">
+      <Filter>Header Files\Actions\StringActions</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexStringFromStack.h">
+      <Filter>Header Files\Actions\StringActions</Filter>
+    </ClInclude>
+    <ClInclude Include="GetLengthOfStringFromStack.h">
+      <Filter>Header Files\Actions\StringActions</Filter>
+    </ClInclude>
+    <ClInclude Include="DuplicateStringFromStack.h">
+      <Filter>Header Files\Actions\StringActions</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcatenateStringFromStack.h">
+      <Filter>Header Files\Actions\StringActions</Filter>
+    </ClInclude>
+    <ClInclude Include="AddNewLineToStringFromStack.h">
+      <Filter>Header Files\Actions\StringActions</Filter>
+    </ClInclude>
+    <ClInclude Include="PushStringToStack.h">
+      <Filter>Header Files\Actions\ValueActions</Filter>
+    </ClInclude>
+    <ClInclude Include="PushNumberToStack.h">
+      <Filter>Header Files\Actions\ValueActions</Filter>
+    </ClInclude>
+    <ClInclude Include="AssignVariableFromStack.h">
+      <Filter>Header Files\Actions\ValueActions</Filter>
+    </ClInclude>
+    <ClInclude Include="PushVariableToStack.h">
+      <Filter>Header Files\Actions\ValueActions</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DefineLabel.h">
+      <Filter>Header Files\Actions\ValueActions</Filter>
+    </ClInclude>
+    <ClInclude Include="PushLabelToStack.h">
+      <Filter>Header Files\Actions\ValueActions</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToLineIfNotEqual.h">
+      <Filter>Header Files\Actions\JumpActions</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToLineIfLessOrEqual.h">
+      <Filter>Header Files\Actions\JumpActions</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToLineIfLess.h">
+      <Filter>Header Files\Actions\JumpActions</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToLineIfGreaterOrEqual.h">
+      <Filter>Header Files\Actions\JumpActions</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToLineIfGreater.h">
+      <Filter>Header Files\Actions\JumpActions</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToLineIfEqual.h">
+      <Filter>Header Files\Actions\JumpActions</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToLine.h">
+      <Filter>Header Files\Actions\JumpActions</Filter>
+    </ClInclude>
+    <ClInclude Include="ExecuteFunction.h">
+      <Filter>Header Files\Actions\Function&amp;EndActions</Filter>
+    </ClInclude>
+    <ClInclude Include="ReturnFunction.h">
+      <Filter>Header Files\Actions\Function&amp;EndActions</Filter>
+    </ClInclude>
+    <ClInclude Include="End.h">
+      <Filter>Header Files\Actions\Function&amp;EndActions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -101,62 +176,104 @@
     <ClCompile Include="Action.cpp">
       <Filter>Source Files\Actions</Filter>
     </ClCompile>
-    <ClCompile Include="PushNumberToStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="AddNumbersFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
     <ClCompile Include="SubtractNumbersFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="MultiplyNumbersFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="DivideNumbersFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuloNumbersFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="MakeAbsoluteNumberFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="IncrementNumberFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="DecrementNumberFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
+      <Filter>Source Files\Actions\IntegerActions</Filter>
     </ClCompile>
     <ClCompile Include="NegateNumberFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
+      <Filter>Source Files\Actions\IntegerActions</Filter>
     </ClCompile>
-    <ClCompile Include="PushStringToStack.cpp">
-      <Filter>Source Files\Actions</Filter>
+    <ClCompile Include="MultiplyNumbersFromStack.cpp">
+      <Filter>Source Files\Actions\IntegerActions</Filter>
     </ClCompile>
-    <ClCompile Include="DuplicateStringFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
+    <ClCompile Include="ModuloNumbersFromStack.cpp">
+      <Filter>Source Files\Actions\IntegerActions</Filter>
     </ClCompile>
-    <ClCompile Include="ReverseStringFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
+    <ClCompile Include="MakeAbsoluteNumberFromStack.cpp">
+      <Filter>Source Files\Actions\IntegerActions</Filter>
+    </ClCompile>
+    <ClCompile Include="IncrementNumberFromStack.cpp">
+      <Filter>Source Files\Actions\IntegerActions</Filter>
+    </ClCompile>
+    <ClCompile Include="DivideNumbersFromStack.cpp">
+      <Filter>Source Files\Actions\IntegerActions</Filter>
+    </ClCompile>
+    <ClCompile Include="DecrementNumberFromStack.cpp">
+      <Filter>Source Files\Actions\IntegerActions</Filter>
     </ClCompile>
     <ClCompile Include="SubstringStringFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="AddNewLineToStringFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="ConcatenateStringFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="GetLengthOfStringFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="IndexStringFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
+      <Filter>Source Files\Actions\StringActions</Filter>
     </ClCompile>
     <ClCompile Include="RotateStringFromStack.cpp">
-      <Filter>Source Files\Actions</Filter>
+      <Filter>Source Files\Actions\StringActions</Filter>
+    </ClCompile>
+    <ClCompile Include="ReverseStringFromStack.cpp">
+      <Filter>Source Files\Actions\StringActions</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexStringFromStack.cpp">
+      <Filter>Source Files\Actions\StringActions</Filter>
+    </ClCompile>
+    <ClCompile Include="GetLengthOfStringFromStack.cpp">
+      <Filter>Source Files\Actions\StringActions</Filter>
+    </ClCompile>
+    <ClCompile Include="DuplicateStringFromStack.cpp">
+      <Filter>Source Files\Actions\StringActions</Filter>
+    </ClCompile>
+    <ClCompile Include="ConcatenateStringFromStack.cpp">
+      <Filter>Source Files\Actions\StringActions</Filter>
+    </ClCompile>
+    <ClCompile Include="AddNewLineToStringFromStack.cpp">
+      <Filter>Source Files\Actions\StringActions</Filter>
+    </ClCompile>
+    <ClCompile Include="AddNumbersFromStack.cpp">
+      <Filter>Source Files\Actions\IntegerActions</Filter>
+    </ClCompile>
+    <ClCompile Include="PushNumberToStack.cpp">
+      <Filter>Source Files\Actions\ValueActions</Filter>
+    </ClCompile>
+    <ClCompile Include="PushStringToStack.cpp">
+      <Filter>Source Files\Actions\ValueActions</Filter>
+    </ClCompile>
+    <ClCompile Include="AssignVariableFromStack.cpp">
+      <Filter>Source Files\Actions\ValueActions</Filter>
+    </ClCompile>
+    <ClCompile Include="PushVariableToStack.cpp">
+      <Filter>Source Files\Actions\ValueActions</Filter>
+    </ClCompile>
+    <ClCompile Include="DefineLabel.cpp">
+      <Filter>Source Files\Actions\ValueActions</Filter>
+    </ClCompile>
+    <ClCompile Include="PushLabelToStack.cpp">
+      <Filter>Source Files\Actions\ValueActions</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToLineIfNotEqual.cpp">
+      <Filter>Source Files\Actions\JumpActions</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToLine.cpp">
+      <Filter>Source Files\Actions\JumpActions</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToLineIfEqual.cpp">
+      <Filter>Source Files\Actions\JumpActions</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToLineIfGreater.cpp">
+      <Filter>Source Files\Actions\JumpActions</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToLineIfGreaterOrEqual.cpp">
+      <Filter>Source Files\Actions\JumpActions</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToLineIfLess.cpp">
+      <Filter>Source Files\Actions\JumpActions</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToLineIfLessOrEqual.cpp">
+      <Filter>Source Files\Actions\JumpActions</Filter>
+    </ClCompile>
+    <ClCompile Include="ExecuteFunction.cpp">
+      <Filter>Source Files\Actions\Function&amp;EndActions</Filter>
+    </ClCompile>
+    <ClCompile Include="ReturnFunction.cpp">
+      <Filter>Source Files\Actions\Function&amp;EndActions</Filter>
+    </ClCompile>
+    <ClCompile Include="End.cpp">
+      <Filter>Source Files\Actions\Function&amp;EndActions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

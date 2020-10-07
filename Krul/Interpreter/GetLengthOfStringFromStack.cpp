@@ -1,16 +1,18 @@
 #include "pch.h"
 #include "GetLengthOfStringFromStack.h"
 
-void GetLengthOfStringFromStack::Do(std::vector<std::string>& stack) {
-	std::string string = stack.back();
-	stack.pop_back();
+int GetLengthOfStringFromStack::Do(MemoryData& data, int i) {
+	std::string string = data.stack.back();
+	data.stack.pop_back();
 
 	std::string res = std::to_string(string.length());
 
-	stack.push_back(res);
+	data.stack.push_back(res);
+
+	return i;
 }
 
-std::unique_ptr<Action> GetLengthOfStringFromStack::Match(std::string line) {
+std::unique_ptr<Action> GetLengthOfStringFromStack::Match(MemoryData & data, int i, std::string line) {
 	std::regex e("^len$");
 
 	if (std::regex_match(line, e)) {

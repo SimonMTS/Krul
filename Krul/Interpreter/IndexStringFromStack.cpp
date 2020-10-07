@@ -1,19 +1,21 @@
 #include "pch.h"
 #include "IndexStringFromStack.h"
 
-void IndexStringFromStack::Do(std::vector<std::string>& stack) {
-	int index = std::stoi(stack.back());
-	stack.pop_back();
+int IndexStringFromStack::Do(MemoryData& data, int i) {
+	int index = std::stoi(data.stack.back());
+	data.stack.pop_back();
 
-	std::string string = stack.back();
-	stack.pop_back();
+	std::string string = data.stack.back();
+	data.stack.pop_back();
 
 	std::string res{ string.at(index) };
 
-	stack.push_back(res);
+	data.stack.push_back(res);
+
+	return i;
 }
 
-std::unique_ptr<Action> IndexStringFromStack::Match(std::string line) {
+std::unique_ptr<Action> IndexStringFromStack::Match(MemoryData & data, int i, std::string line) {
 	std::regex e("^idx$");
 
 	if (std::regex_match(line, e)) {

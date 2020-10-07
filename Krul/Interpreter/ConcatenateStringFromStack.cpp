@@ -1,19 +1,21 @@
 #include "pch.h"
 #include "ConcatenateStringFromStack.h"
 
-void ConcatenateStringFromStack::Do(std::vector<std::string>& stack) {
-	std::string string1 = stack.back();
-	stack.pop_back();
+int ConcatenateStringFromStack::Do(MemoryData& data, int i) {
+	std::string string1 = data.stack.back();
+	data.stack.pop_back();
 
-	std::string string2 = stack.back();
-	stack.pop_back();
+	std::string string2 = data.stack.back();
+	data.stack.pop_back();
 
-	std::string res = string1 + string2;
+	std::string res = string2 + string1;
 
-	stack.push_back(res);
+	data.stack.push_back(res);
+
+	return i;
 }
 
-std::unique_ptr<Action> ConcatenateStringFromStack::Match(std::string line) {
+std::unique_ptr<Action> ConcatenateStringFromStack::Match(MemoryData & data, int i, std::string line) {
 	std::regex e("^cat$");
 
 	if (std::regex_match(line, e)) {

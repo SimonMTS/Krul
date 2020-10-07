@@ -1,16 +1,18 @@
 #include "pch.h"
 #include "NegateNumberFromStack.h"
 
-void NegateNumberFromStack::Do(std::vector<std::string>& stack) {
-	int number = std::stoi(stack.back());
-	stack.pop_back();
+int NegateNumberFromStack::Do(MemoryData& data, int i) {
+	int number = std::stoi(data.stack.back());
+	data.stack.pop_back();
 
 	int res = -number;
 
-	stack.push_back(std::to_string(res));
+	data.stack.push_back(std::to_string(res));
+
+	return i;
 }
 
-std::unique_ptr<Action> NegateNumberFromStack::Match(std::string line) {
+std::unique_ptr<Action> NegateNumberFromStack::Match(MemoryData & data, int i, std::string line) {
 	std::regex e("^neg$");
 
 	if (std::regex_match(line, e)) {

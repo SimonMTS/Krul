@@ -5,18 +5,21 @@ PushStringToStack::PushStringToStack(std::string s) {
 	string = s;
 }
 
-void PushStringToStack::Do(std::vector<std::string>& stack) {
-	stack.push_back(string);
+int PushStringToStack::Do(MemoryData& data, int i) {
+	data.stack.push_back(string);
+
+	return i;
 }
 
-std::unique_ptr<Action> PushStringToStack::Match(std::string line) {
+std::unique_ptr<Action> PushStringToStack::Match(MemoryData & data, int i, std::string line) {
 
-	std::regex e("^\\\\\\w*$");
+	std::regex e("^\\\\.*$");
 
 	if (std::regex_match(line, e)) {
+		line.erase(0, 1);
+
 		return std::unique_ptr<Action>(new PushStringToStack(line));
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 

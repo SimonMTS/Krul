@@ -5,13 +5,15 @@ PushNumberToStack::PushNumberToStack(std::string n) {
 	number = n;
 }
 
-void PushNumberToStack::Do(std::vector<std::string>& stack) {
+int PushNumberToStack::Do(MemoryData& data, int i) {
 	//std::cout << "PushNumberToStack\n";
 
-	stack.push_back(number);
+	data.stack.push_back(number);
+
+	return i;
 }
 
-std::unique_ptr<Action> PushNumberToStack::Match(std::string line) {
+std::unique_ptr<Action> PushNumberToStack::Match(MemoryData & data, int i, std::string line) {
 
 	std::regex e("^\\d*$");
 

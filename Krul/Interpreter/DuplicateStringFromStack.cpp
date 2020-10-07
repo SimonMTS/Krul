@@ -1,11 +1,13 @@
 #include "pch.h"
 #include "DuplicateStringFromStack.h"
 
-void DuplicateStringFromStack::Do(std::vector<std::string>& stack) {
-	stack.push_back(stack.back());
+int DuplicateStringFromStack::Do(MemoryData& data, int i) {
+	data.stack.push_back(data.stack.back());
+
+	return i;
 }
 
-std::unique_ptr<Action> DuplicateStringFromStack::Match(std::string line) {
+std::unique_ptr<Action> DuplicateStringFromStack::Match(MemoryData & data, int i, std::string line) {
 	std::regex e("^dup$");
 
 	if (std::regex_match(line, e)) {

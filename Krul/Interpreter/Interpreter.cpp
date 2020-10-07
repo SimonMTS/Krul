@@ -6,7 +6,12 @@ std::string Interpreter::Interpret(std::string code) {
 	Parse(code);
 	Execute();
 
-	return Interpreter::stack.size() > 0 ? Interpreter::stack.at(0) : "";
+	return data.stack.size() > 0 ? data.stack.at(data.stack.size() - 1) : "";
+}
+
+bool Interpreter::Ended()
+{
+	return data.ended;
 }
 
 void Interpreter::Parse(std::string code) {
@@ -16,19 +21,21 @@ void Interpreter::Parse(std::string code) {
 
 	Action::Populate();
 
+	int i = 0;
 	while (std::getline(lines, line)) {
-		//std::cout << one_line << "\n";
-
-		std::unique_ptr<Action> action{ Action::Match(line) };
+		std::unique_ptr<Action> action{ Action::Match(data, i, line) };
 		actions.push_back(std::move(action));
+		i++;
 	}
 
 }
 
 void Interpreter::Execute() {
 
-	for (auto& action : actions) {
-		(*(action.get())).Do( stack );
+	int len = actions.size();
+
+	for (int i = 0; i < len; i++) {
+		i = (*((actions.at(i)).get())).Do(data, i);
 	}
 
 }

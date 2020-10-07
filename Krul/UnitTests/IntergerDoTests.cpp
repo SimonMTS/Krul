@@ -10,96 +10,96 @@
 #include "../Interpreter/DecrementNumberFromStack.h"
 
 TEST(Integer_DoTests, Add_DoTest) {
-	std::vector<std::string> stack;
-	stack.push_back("4");
-	stack.push_back("2");
+	MemoryData data;
+	data.stack.push_back("4");
+	data.stack.push_back("2");
 
 	AddNumbersFromStack action;
-	action.Do(stack);
+	action.Do(data, 0);
 
-	ASSERT_EQ(stack.at(0), "6");
+	ASSERT_EQ(data.stack.at(0), "6");
 }
 
 TEST(Integer_DoTests, Sub_DoTest) {
-	std::vector<std::string> stack;
-	stack.push_back("3");
-	stack.push_back("5");
+	MemoryData data;
+	data.stack.push_back("5");
+	data.stack.push_back("3");
 
 	SubtractNumbersFromStack action;
-	action.Do(stack);
+	action.Do(data, 0);
 
-	ASSERT_EQ(stack.at(0), "2");
+	ASSERT_EQ(data.stack.at(0), "2");
 }
 
 TEST(Integer_DoTests, Mul_DoTest) {
-	std::vector<std::string> stack;
-	stack.push_back("4");
-	stack.push_back("2");
+	MemoryData data;
+	data.stack.push_back("4");
+	data.stack.push_back("2");
 
 	MultiplyNumbersFromStack action;
-	action.Do(stack);
+	action.Do(data, 0);
 
-	ASSERT_EQ(stack.at(0), "8");
+	ASSERT_EQ(data.stack.at(0), "8");
 }
 
 TEST(Integer_DoTests, Div_DoTest) {
-	std::vector<std::string> stack;
-	stack.push_back("2");
-	stack.push_back("8");
+	MemoryData data;
+	data.stack.push_back("8");
+	data.stack.push_back("2");
 
 	DivideNumbersFromStack action;
-	action.Do(stack);
+	action.Do(data, 0);
 
-	ASSERT_EQ(stack.at(0), "4");
+	ASSERT_EQ(data.stack.at(0), "4");
 }
 
 TEST(Integer_DoTests, Mod_DoTest) {
-	std::vector<std::string> stack;
-	stack.push_back("5");
-	stack.push_back("2");
+	MemoryData data;
+	data.stack.push_back("5"); //val 2
+	data.stack.push_back("2"); //val 1
 
 	ModuloNumbersFromStack action;
-	action.Do(stack);
+	action.Do(data, 0);
 
-	ASSERT_EQ(stack.at(0), "1");
+	ASSERT_EQ(data.stack.at(0), "1");
 }
 
 TEST(Integer_DoTests, Neg_DoTest) {
-	std::vector<std::string> stack;
-	stack.push_back("4");
+	MemoryData data;
+	data.stack.push_back("4");
 
 	NegateNumberFromStack action;
-	action.Do(stack);
+	action.Do(data, 0);
 
-	ASSERT_EQ(stack.at(0), "-4");
+	ASSERT_EQ(data.stack.at(0), "-4");
 }
 
 TEST(Integer_DoTests, Abs_DoTest) {
-	std::vector<std::string> stack;
-	stack.push_back("4");
+	MemoryData data;
+	data.stack.push_back("4");
 
 	MakeAbsoluteNumberFromStack action;
-	action.Do(stack);
+	action.Do(data, 0);
 
-	ASSERT_EQ(stack.at(0), "4");
+	ASSERT_EQ(data.stack.at(0), "4");
 }
 
 TEST(Integer_DoTests, Inc_DoTest) {
-	std::vector<std::string> stack;
-	stack.push_back("4");
+	MemoryData data;
+	data.stack.push_back("4");
 
 	IncrementNumberFromStack action;
-	action.Do(stack);
+	action.Do(data, 0);
 
-	ASSERT_EQ(stack.at(0), "5");
+	ASSERT_EQ(data.stack.at(0), "5");
 }
 
 TEST(Integer_DoTests, Dec_DoTest) {
-	std::vector<std::string> stack;
-	stack.push_back("4");
+	MemoryData data;
+	data.stack.push_back("4");
 
 	DecrementNumberFromStack action;
-	action.Do(stack);
+	action.Do(data, 0);
 
-	ASSERT_EQ(stack.at(0), "3");
+	ASSERT_EQ(data.stack.at(0), "3");
 }

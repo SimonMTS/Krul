@@ -1,16 +1,18 @@
 #include "pch.h"
 #include "RotateStringFromStack.h"
 
-void RotateStringFromStack::Do(std::vector<std::string>& stack) {
-	std::string string = stack.back();
-	stack.pop_back();
+int RotateStringFromStack::Do(MemoryData& data, int i) {
+	std::string string = data.stack.back();
+	data.stack.pop_back();
 
 	std::string res = rot13(string);
 
-	stack.push_back(res);
+	data.stack.push_back(res);
+
+	return i;
 }
 
-std::unique_ptr<Action> RotateStringFromStack::Match(std::string line) {
+std::unique_ptr<Action> RotateStringFromStack::Match(MemoryData & data, int i, std::string line) {
 	std::regex e("^rot$");
 
 	if (std::regex_match(line, e)) {
