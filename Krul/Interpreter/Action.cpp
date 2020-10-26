@@ -38,49 +38,53 @@ std::vector<std::shared_ptr<std::unique_ptr<Action>(*)(MemoryData&, int, std::st
 
 void Action::Populate() {
 	// Values & Types
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(PushNumberToStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(PushStringToStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(AssignVariableFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(DefineLabel::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(PushLabelToStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(PushVariableToStack::Match));
+	PopulateSingle(PushNumberToStack::Match);
+	PopulateSingle(PushStringToStack::Match);
+	PopulateSingle(AssignVariableFromStack::Match);
+	PopulateSingle(DefineLabel::Match);
+	PopulateSingle(PushLabelToStack::Match);
+	PopulateSingle(PushVariableToStack::Match);
 
 	// Integer operaties
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(AddNumbersFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(SubtractNumbersFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(MultiplyNumbersFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(DivideNumbersFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(ModuloNumbersFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(MakeAbsoluteNumberFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(IncrementNumberFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(DecrementNumberFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(NegateNumberFromStack::Match));
+	PopulateSingle(AddNumbersFromStack::Match);
+	PopulateSingle(SubtractNumbersFromStack::Match);
+	PopulateSingle(MultiplyNumbersFromStack::Match);
+	PopulateSingle(DivideNumbersFromStack::Match);
+	PopulateSingle(ModuloNumbersFromStack::Match);
+	PopulateSingle(MakeAbsoluteNumberFromStack::Match);
+	PopulateSingle(IncrementNumberFromStack::Match);
+	PopulateSingle(DecrementNumberFromStack::Match);
+	PopulateSingle(NegateNumberFromStack::Match);
 
 	// String operaties
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(DuplicateStringFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(AddNewLineToStringFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(RotateStringFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(GetLengthOfStringFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(ConcatenateStringFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(IndexStringFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(SubstringStringFromStack::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(ReverseStringFromStack::Match));
+	PopulateSingle(DuplicateStringFromStack::Match);
+	PopulateSingle(AddNewLineToStringFromStack::Match);
+	PopulateSingle(RotateStringFromStack::Match);
+	PopulateSingle(GetLengthOfStringFromStack::Match);
+	PopulateSingle(ConcatenateStringFromStack::Match);
+	PopulateSingle(IndexStringFromStack::Match);
+	PopulateSingle(SubstringStringFromStack::Match);
+	PopulateSingle(ReverseStringFromStack::Match);
 
 	// Tests & Jumps
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(GoToLine::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(GoToLineIfEqual::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(GoToLineIfGreater::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(GoToLineIfGreaterOrEqual::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(GoToLineIfLess::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(GoToLineIfLessOrEqual::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(GoToLineIfNotEqual::Match));
+	PopulateSingle(GoToLine::Match);
+	PopulateSingle(GoToLineIfEqual::Match);
+	PopulateSingle(GoToLineIfGreater::Match);
+	PopulateSingle(GoToLineIfGreaterOrEqual::Match);
+	PopulateSingle(GoToLineIfLess::Match);
+	PopulateSingle(GoToLineIfLessOrEqual::Match);
+	PopulateSingle(GoToLineIfNotEqual::Match);
 	
 	// Functies
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(ExecuteFunction::Match));
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(ReturnFunction::Match));
+	PopulateSingle(ExecuteFunction::Match);
+	PopulateSingle(ReturnFunction::Match);
 	
 	// Eindoplossing
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(End::Match));
+	PopulateSingle(End::Match);
+}
+
+void Action::PopulateSingle(std::unique_ptr<Action>(matcher)(MemoryData&, int, std::string)) {
+	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(matcher));
 }
 
 std::unique_ptr<Action> Action::Match(MemoryData& data, int i, std::string line) {

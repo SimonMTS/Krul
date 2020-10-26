@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <string>
+#include <functional>
 #include "curl/curl.h"
 #include "curl/easy.h"
 
@@ -10,7 +11,7 @@ private:
 	static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp);
 
 public:
-	std::unique_ptr<CURL, void(*)(CURL*)> req;
+	std::unique_ptr<CURL, std::function<void(CURL*)>> req;
 
 	CurlWrapper();
 

@@ -2,7 +2,6 @@
 #include "Interpreter.h"
 
 std::string Interpreter::Interpret(std::string code) {
-
 	Parse(code);
 	Execute();
 

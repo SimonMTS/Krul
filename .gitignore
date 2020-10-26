@@ -1,15 +1,26 @@
 
+Krul/packages/
 Krul/Krul/Debug/
 Krul/Debug/
 Krul/CurlWrapper/Debug/
 Krul/Interpreter/Debug/
-Krul/packages/
 Krul/UnitTests/Debug/
 Krul/CurlWrapper/x64/Debug/
 Krul/UnitTests/x64/Debug/
 Krul/Interpreter/x64/Debug/
 Krul/Krul/x64/Debug/
 Krul/x64/Debug/
+
+Krul/Krul/Release/
+Krul/Release/
+Krul/CurlWrapper/Release/
+Krul/Interpreter/Release/
+Krul/UnitTests/Release/
+Krul/CurlWrapper/x64/Release/
+Krul/UnitTests/x64/Release/
+Krul/Interpreter/x64/Release/
+Krul/Krul/x64/Release/
+Krul/x64/Release/
 
 .vs
 Krul/.visuallint/

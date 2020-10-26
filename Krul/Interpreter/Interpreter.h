@@ -7,7 +7,7 @@
 class Interpreter
 {
 private:
-	std::vector< std::unique_ptr<Action> > actions;
+	std::vector<std::unique_ptr<Action>> actions;
 	MemoryData data;
 
 	void Parse(std::string code);

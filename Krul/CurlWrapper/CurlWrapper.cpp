@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "CurlWrapper.h"
 
-CurlWrapper::CurlWrapper() : req(curl_easy_init(), curl_easy_cleanup) { }
+CurlWrapper::CurlWrapper() {
+    req = std::unique_ptr<CURL, std::function<void(CURL*)>>(curl_easy_init(), curl_easy_cleanup);
+}
 
 size_t CurlWrapper::WriteCallback(void* contents, size_t size, size_t nmemb, void* userp)
 {
@@ -13,8 +15,7 @@ std::string CurlWrapper::getUrl(std::string url) {
 
     CURLcode res;
     std::string readBuffer;
-    if (req)
-    {
+    if (req) {
         curl_easy_setopt(req.get(), CURLOPT_URL, url.c_str());
         curl_easy_setopt(req.get(), CURLOPT_FOLLOWLOCATION, 1L);
 
@@ -23,8 +24,7 @@ std::string CurlWrapper::getUrl(std::string url) {
 
         res = curl_easy_perform(req.get());
 
-        if (res != CURLE_OK)
-        {
+        if (res != CURLE_OK) {
             fprintf(stderr, "curl_easy_operation() failed : %s\n", curl_easy_strerror(res));
         }
     }
