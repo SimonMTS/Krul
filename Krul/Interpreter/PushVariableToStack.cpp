@@ -6,6 +6,11 @@ PushVariableToStack::PushVariableToStack(std::string n) {
 }
 
 int PushVariableToStack::Do(MemoryData& data, int i) {
+	if (data.variables.find(name) == data.variables.end()) {
+		std::string msg = "Runtime Error: PushVariableToStack called with undeclared variable name. On line number " + std::to_string(i + 1) + ".";
+		throw std::exception(msg.c_str());
+	}
+
 	std::string string = data.variables[name];
 
 	data.stack.push_back(string);

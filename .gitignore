@@ -5,6 +5,11 @@ Krul/CurlWrapper/Debug/
 Krul/Interpreter/Debug/
 Krul/packages/
 Krul/UnitTests/Debug/
+Krul/CurlWrapper/x64/Debug/
+Krul/UnitTests/x64/Debug/
+Krul/Interpreter/x64/Debug/
+Krul/Krul/x64/Debug/
+Krul/x64/Debug/
 
 .vs
 Krul/.visuallint/

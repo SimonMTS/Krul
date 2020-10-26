@@ -2,7 +2,14 @@
 #include "DecrementNumberFromStack.h"
 
 int DecrementNumberFromStack::Do(MemoryData& data, int i) {
-	int number = std::stoi(data.stack.back());
+	int number;
+	try {
+		number = std::stoi(data.stack.back());
+	} catch (std::exception e) {
+		std::string msg = "Runtime Error: DecrementNumberFromStack called on a non number value. On line number " + std::to_string(i + 1) + ".";
+		throw std::exception(msg.c_str());
+	}
+
 	data.stack.pop_back();
 
 	int res = --number;

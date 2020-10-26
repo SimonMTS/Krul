@@ -2,12 +2,24 @@
 #include "IndexStringFromStack.h"
 
 int IndexStringFromStack::Do(MemoryData& data, int i) {
-	int index = std::stoi(data.stack.back());
-	data.stack.pop_back();
+	if (data.stack.size() < 2) {
+		std::string msg = "Runtime Error: IndexStringFromStack called on stack with only " + std::to_string(data.stack.size()) + " value. On line number " + std::to_string(i + 1) + ".";
+		throw std::exception(msg.c_str());
+	}
+	
+	int index;
+	try {
+		index = std::stoi(data.stack.back());
+		data.stack.pop_back();
+	} catch(std::exception e) {
+		std::string msg = "Runtime Error: IndexStringFromStack called with non number index. On line number " + std::to_string(i + 1) + ".";
+		throw std::exception(msg.c_str());
+	}
 
 	std::string string = data.stack.back();
 	data.stack.pop_back();
 
+	// todo maybe try catch this
 	std::string res{ string.at(index) };
 
 	data.stack.push_back(res);

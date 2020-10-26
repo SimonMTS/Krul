@@ -2,6 +2,11 @@
 #include "ConcatenateStringFromStack.h"
 
 int ConcatenateStringFromStack::Do(MemoryData& data, int i) {
+	if (data.stack.size() < 2) {
+		std::string msg = "Runtime Error: ConcatenateStringFromStack called on stack with only " + std::to_string(data.stack.size()) + " value. On line number " + std::to_string(i + 1) + ".";
+		throw std::exception(msg.c_str());
+	}
+
 	std::string string1 = data.stack.back();
 	data.stack.pop_back();
 

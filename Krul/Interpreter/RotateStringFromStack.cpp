@@ -2,6 +2,11 @@
 #include "RotateStringFromStack.h"
 
 int RotateStringFromStack::Do(MemoryData& data, int i) {
+	if (data.stack.size() < 1) {
+		std::string msg = "Runtime Error: RotateStringFromStack called on empty stack. On line number " + std::to_string(i + 1) + ".";
+		throw std::exception(msg.c_str());
+	}
+
 	std::string string = data.stack.back();
 	data.stack.pop_back();
 
@@ -28,14 +33,11 @@ std::string RotateStringFromStack::rot13(std::string input) {
 	for (std::string::size_type len = input.length(), idx = 0; idx != len; ++idx) {
 		if (input[idx] >= 'a' && input[idx] <= 'm') {
 			input[idx] = input[idx] + 13;
-		}
-		else if (input[idx] >= 'n' && input[idx] <= 'z') {
+		} else if (input[idx] >= 'n' && input[idx] <= 'z') {
 			input[idx] = input[idx] - 13;
-		}
-		else if (input[idx] >= 'A' && input[idx] <= 'M') {
+		} else if (input[idx] >= 'A' && input[idx] <= 'M') {
 			input[idx] = input[idx] + 13;
-		}
-		else if (input[idx] >= 'N' && input[idx] <= 'Z') {
+		} else if (input[idx] >= 'N' && input[idx] <= 'Z') {
 			input[idx] = input[idx] - 13;
 		}
 	}

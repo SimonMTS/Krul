@@ -2,6 +2,11 @@
 #include "DuplicateStringFromStack.h"
 
 int DuplicateStringFromStack::Do(MemoryData& data, int i) {
+	if (data.stack.size() < 1) {
+		std::string msg = "Runtime Error: DuplicateStringFromStack called on empty stack. On line number " + std::to_string(i + 1) + ".";
+		throw std::exception(msg.c_str());
+	}
+
 	data.stack.push_back(data.stack.back());
 
 	return i;

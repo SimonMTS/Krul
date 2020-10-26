@@ -6,6 +6,11 @@ PushLabelToStack::PushLabelToStack(std::string n) {
 }
 
 int PushLabelToStack::Do(MemoryData& data, int i) {
+	if (data.labels.find(name) == data.labels.end()) {
+		std::string msg = "Runtime Error: PushLabelToStack called with undeclared label name. On line number " + std::to_string(i + 1) + ".";
+		throw std::exception(msg.c_str());
+	}
+
 	data.stack.push_back("|" + std::to_string(data.labels[name]));
 
 	return i;
@@ -13,7 +18,7 @@ int PushLabelToStack::Do(MemoryData& data, int i) {
 
 std::unique_ptr<Action> PushLabelToStack::Match(MemoryData & data, int i, std::string line) {
 
-	std::regex e(">.*$");
+	std::regex e("^>.*$");
 
 	if (std::regex_match(line, e)) {
 		line.erase(0, 1);

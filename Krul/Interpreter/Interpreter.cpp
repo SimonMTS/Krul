@@ -23,9 +23,15 @@ void Interpreter::Parse(std::string code) {
 
 	int i = 0;
 	while (std::getline(lines, line)) {
-		std::unique_ptr<Action> action{ Action::Match(data, i, line) };
-		actions.push_back(std::move(action));
-		i++;
+		try {
+			std::unique_ptr<Action> action{ Action::Match(data, i, line) };
+			actions.push_back(std::move(action));
+			i++;
+		}
+		catch (std::exception e) {
+			std::cout << e.what() << std::endl;
+			std::exit(1);
+		}
 	}
 
 }
@@ -35,7 +41,14 @@ void Interpreter::Execute() {
 	int len = actions.size();
 
 	for (int i = 0; i < len; i++) {
-		i = (*((actions.at(i)).get())).Do(data, i);
+
+		try {
+			i = (*((actions.at(i)).get())).Do(data, i);
+		} catch (std::exception e) {
+			std::cout << e.what() << std::endl;
+			std::exit(1);
+		}
+
 	}
 
 }

@@ -6,6 +6,11 @@ AssignVariableFromStack::AssignVariableFromStack(std::string n) {
 }
 
 int AssignVariableFromStack::Do(MemoryData& data, int i) {
+	if (data.stack.size() < 1) {
+		std::string msg = "Runtime Error: AssignVariableFromStack called on empty stack. On line number " + std::to_string(i + 1) + ".";
+		throw std::exception(msg.c_str());
+	}
+
 	std::string string = data.stack.back();
 	data.stack.pop_back();
 
