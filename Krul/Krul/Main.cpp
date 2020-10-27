@@ -1,25 +1,27 @@
-#include <iostream>
 #include <crtdbg.h>
+#include <iostream>
 #include "../CurlWrapper/CurlWrapper.h"
 #include "../Interpreter/Interpreter.h"
+using std::string;
+using std::cout;
 
-int main(int argc, char* argv[]) {
+int main() {
     {
         CurlWrapper curl;
 
-        std::string code;
-        std::string url = "start.txt";
+        string code;
+        string url = "start.txt";
 
         while (true) {
             code = curl.getUrl("https://www.swiftcoder.nl/cpp1/" + url);
-            std::cout << url << "\n";
+            cout << url << "\n";
 
             Interpreter Krul;
             url = Krul.Interpret(code);
 
             if (Krul.Ended()) {
-                std::cout << "\nSecret: \n";
-                std::cout << url << "\n";
+                cout << "\nSecret: \n";
+                cout << url << "\n";
                 break;
             }
         }

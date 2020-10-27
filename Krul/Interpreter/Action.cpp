@@ -33,72 +33,81 @@
 #include "ReturnFunction.h"
 #include "NegateNumberFromStack.h"
 #include "End.h"
+using std::string;
+using std::exception;
+using std::vector;
+using std::unique_ptr;
+using std::shared_ptr;
+using std::make_shared;
 
-std::vector<std::shared_ptr<std::unique_ptr<Action>(*)(MemoryData&, int, const std::string&)>> Action::matchFunctions{};
+vector<
+    shared_ptr<unique_ptr<Action>(*)(MemoryData&, int, const string&)>
+    > Action::matchFunctions{};
 
 void Action::Populate() {
-	if (Action::matchFunctions.size() != 0) return;
+    if (Action::matchFunctions.size() != 0) return;
 
-	// Values & Types
-	PopulateSingle(PushNumberToStack::Match);
-	PopulateSingle(PushStringToStack::Match);
-	PopulateSingle(AssignVariableFromStack::Match);
-	PopulateSingle(DefineLabel::Match);
-	PopulateSingle(PushLabelToStack::Match);
-	PopulateSingle(PushVariableToStack::Match);
+    // Values & Types
+    PopulateSingle(PushNumberToStack::Match);
+    PopulateSingle(PushStringToStack::Match);
+    PopulateSingle(AssignVariableFromStack::Match);
+    PopulateSingle(DefineLabel::Match);
+    PopulateSingle(PushLabelToStack::Match);
+    PopulateSingle(PushVariableToStack::Match);
 
-	// Integer operaties
-	PopulateSingle(AddNumbersFromStack::Match);
-	PopulateSingle(SubtractNumbersFromStack::Match);
-	PopulateSingle(MultiplyNumbersFromStack::Match);
-	PopulateSingle(DivideNumbersFromStack::Match);
-	PopulateSingle(ModuloNumbersFromStack::Match);
-	PopulateSingle(MakeAbsoluteNumberFromStack::Match);
-	PopulateSingle(IncrementNumberFromStack::Match);
-	PopulateSingle(DecrementNumberFromStack::Match);
-	PopulateSingle(NegateNumberFromStack::Match);
+    // Integer operaties
+    PopulateSingle(AddNumbersFromStack::Match);
+    PopulateSingle(SubtractNumbersFromStack::Match);
+    PopulateSingle(MultiplyNumbersFromStack::Match);
+    PopulateSingle(DivideNumbersFromStack::Match);
+    PopulateSingle(ModuloNumbersFromStack::Match);
+    PopulateSingle(MakeAbsoluteNumberFromStack::Match);
+    PopulateSingle(IncrementNumberFromStack::Match);
+    PopulateSingle(DecrementNumberFromStack::Match);
+    PopulateSingle(NegateNumberFromStack::Match);
 
-	// String operaties
-	PopulateSingle(DuplicateStringFromStack::Match);
-	PopulateSingle(AddNewLineToStringFromStack::Match);
-	PopulateSingle(RotateStringFromStack::Match);
-	PopulateSingle(GetLengthOfStringFromStack::Match);
-	PopulateSingle(ConcatenateStringFromStack::Match);
-	PopulateSingle(IndexStringFromStack::Match);
-	PopulateSingle(SubstringStringFromStack::Match);
-	PopulateSingle(ReverseStringFromStack::Match);
+    // String operaties
+    PopulateSingle(DuplicateStringFromStack::Match);
+    PopulateSingle(AddNewLineToStringFromStack::Match);
+    PopulateSingle(RotateStringFromStack::Match);
+    PopulateSingle(GetLengthOfStringFromStack::Match);
+    PopulateSingle(ConcatenateStringFromStack::Match);
+    PopulateSingle(IndexStringFromStack::Match);
+    PopulateSingle(SubstringStringFromStack::Match);
+    PopulateSingle(ReverseStringFromStack::Match);
 
-	// Tests & Jumps
-	PopulateSingle(GoToLine::Match);
-	PopulateSingle(GoToLineIfEqual::Match);
-	PopulateSingle(GoToLineIfGreater::Match);
-	PopulateSingle(GoToLineIfGreaterOrEqual::Match);
-	PopulateSingle(GoToLineIfLess::Match);
-	PopulateSingle(GoToLineIfLessOrEqual::Match);
-	PopulateSingle(GoToLineIfNotEqual::Match);
-	
-	// Functies
-	PopulateSingle(ExecuteFunction::Match);
-	PopulateSingle(ReturnFunction::Match);
-	
-	// Eindoplossing
-	PopulateSingle(End::Match);
+    // Tests & Jumps
+    PopulateSingle(GoToLine::Match);
+    PopulateSingle(GoToLineIfEqual::Match);
+    PopulateSingle(GoToLineIfGreater::Match);
+    PopulateSingle(GoToLineIfGreaterOrEqual::Match);
+    PopulateSingle(GoToLineIfLess::Match);
+    PopulateSingle(GoToLineIfLessOrEqual::Match);
+    PopulateSingle(GoToLineIfNotEqual::Match);
+
+    // Functies
+    PopulateSingle(ExecuteFunction::Match);
+    PopulateSingle(ReturnFunction::Match);
+
+    // Eindoplossing
+    PopulateSingle(End::Match);
 }
 
-void Action::PopulateSingle(std::unique_ptr<Action>(matcher)(MemoryData&, int, const std::string&)) {
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, const std::string&)>(matcher));
+void Action::PopulateSingle(
+    unique_ptr<Action>(matcher)(MemoryData&, int, const string&)) {
+    Action::matchFunctions.push_back(make_shared<
+        unique_ptr<Action>(*)(MemoryData&, int, const string&)>(matcher));
 }
 
-std::unique_ptr<Action> Action::Match(MemoryData& data, int i, const std::string& line) {
+unique_ptr<Action> Action::Match(MemoryData& data, int i, const string& line) {
+    for (auto& matchFunction : Action::matchFunctions) {
+        auto a = (*(matchFunction.get()))(data, i, line);
+        if (a) {
+            return a;
+        }
+    }
 
-	for (auto& matchFunction : Action::matchFunctions) {
-		auto a = (*(matchFunction.get()))(data, i, line);
-		if (a) {
-			return a;
-		}
-	}
-
-	// throw, no match
-	throw std::exception(("Parse Error: line (" + line + ") didn't match any action.").c_str());
-
+    // throw, no match
+    throw exception(("Parse Error: line (" + line +
+        ") didn't match any action.").c_str());
 }

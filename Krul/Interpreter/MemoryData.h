@@ -2,11 +2,14 @@
 #include <string>
 #include <vector>
 #include <map>
+using std::string;
+using std::vector;
+using std::map;
 
 struct MemoryData {
-	std::vector<std::string> stack;
-	std::vector<std::string> callStack;
-	std::map<std::string, std::string> variables;
-	std::map<std::string, int> labels;
-	bool ended = false;
+    vector<string> stack;
+    vector<string> callStack;
+    map<string, string> variables;
+    map<string, int> labels;
+    bool ended = false;
 };

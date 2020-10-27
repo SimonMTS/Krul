@@ -2,19 +2,24 @@
 #include <sstream>
 #include <iostream>
 #include <map>
+#include <memory>
+#include <string>
+#include <utility>
+#include <vector>
 #include "Action.h"
+using std::string;
+using std::unique_ptr;
+using std::vector;
 
-class Interpreter
-{
+class Interpreter {
 private:
-	std::vector<std::unique_ptr<Action>> actions;
-	MemoryData data;
+    vector<unique_ptr<Action>> actions;
+    MemoryData data;
 
-	void Parse(const std::string& code);
-	void Execute();
-	
+    void Parse(const string& code);
+    void Execute();
+
 public:
-	std::string Interpret(const std::string& code);
-	bool Ended() const;
+    string Interpret(const string& code);
+    bool Ended() const;
 };
-

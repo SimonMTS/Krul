@@ -1,45 +1,49 @@
 #include "pch.h"
 #include "Interpreter.h"
+using std::string;
+using std::unique_ptr;
+using std::exception;
+using std::cout;
 
-std::string Interpreter::Interpret(const std::string& code) {
-	Parse(code);
-	Execute();
+string Interpreter::Interpret(const string& code) {
+    Parse(code);
+    Execute();
 
-	return data.stack.size() > 0 ? data.stack.at(data.stack.size() - 1) : "";
+    return data.stack.size() > 0 ? data.stack.at(data.stack.size() - 1) : "";
 }
 
 bool Interpreter::Ended() const {
-	return data.ended;
+    return data.ended;
 }
 
-void Interpreter::Parse(const std::string& code) {
-	std::istringstream lines(code);
-	std::string line;
+void Interpreter::Parse(const string& code) {
+    std::istringstream lines(code);
+    string line;
 
-	Action::Populate();
+    Action::Populate();
 
-	int i = 0;
-	while (std::getline(lines, line)) {
-		try {
-			std::unique_ptr<Action> action{ Action::Match(data, i, line) };
-			actions.push_back(std::move(action));
-			i++;
-		} catch (std::exception e) {
-			std::cout << e.what() << std::endl;
-			std::exit(1);
-		}
-	}
+    int i = 0;
+    while (std::getline(lines, line)) {
+        try {
+            unique_ptr<Action> action{ Action::Match(data, i, line) };
+            actions.push_back(std::move(action));
+            i++;
+        } catch (exception e) {
+            cout << e.what() << "\n";
+            std::exit(1);
+        }
+    }
 }
 
 void Interpreter::Execute() {
-	int len = actions.size();
+    int len = actions.size();
 
-	for (int i = 0; i < len; i++) {
-		try {
-			i = (*((actions.at(i)).get())).Do(data, i);
-		} catch (std::exception e) {
-			std::cout << e.what() << std::endl;
-			std::exit(1);
-		}
-	}
+    for (int i = 0; i < len; i++) {
+        try {
+            i = (*((actions.at(i)).get())).Do(data, i);
+        } catch (exception e) {
+            cout << e.what() << "\n";
+            std::exit(1);
+        }
+    }
 }

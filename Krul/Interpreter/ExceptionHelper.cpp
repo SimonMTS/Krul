@@ -1,53 +1,62 @@
 #include "pch.h"
 #include "ExceptionHelper.h"
+using std::string;
+using std::to_string;
+using std::exception;
+using std::regex;
+using std::regex_match;
 
-void ExceptionHelper::StackContainsEnoughArguments(int n, const MemoryData& data, const std::string& functionName, int lineNumber) {
-	if (data.stack.size() < n) {
-		std::string msg = "Runtime Error: " + functionName + 
-			" called on stack, with to few arguments. On line number " + 
-			std::to_string(lineNumber) + ".";
-		throw std::exception(msg.c_str());
-	}
+void ExceptionHelper::StackContainsEnoughArguments(
+    int n, const MemoryData& data,
+    const string& functionName, int lineNumber) {
+    if (data.stack.size() < n) {
+        throw exception(("Runtime Error: " + functionName +
+            " called on stack, with to few arguments. On line number " +
+            to_string(lineNumber) + ".").c_str());
+    }
 }
 
-void ExceptionHelper::ValueIsLineNumberType(const std::string& s, const std::string& functionName, int lineNumber) {
-	std::regex e("^\\|\\d*$");
+void ExceptionHelper::ValueIsLineNumberType(
+    const string& s, const string& functionName,
+    int lineNumber) {
+    regex expression("^\\|\\d*$");
 
-	if (!std::regex_match(s, e)) {
-		std::string msg = "Runtime Error: " + functionName + 
-			" called on a non linenumber value (doesn't start with a pipe). On line number " + 
-			std::to_string(lineNumber) + ".";
-		throw std::exception(msg.c_str());
-	}
+    if (!regex_match(s, expression)) {
+        throw exception(("Runtime Error: " + functionName +
+            " called on a non linenumber value " +
+            "(doesn't start with a pipe). On line number " +
+            to_string(lineNumber) + ".").c_str());
+    }
 }
 
-void ExceptionHelper::VariableIsDeclared(const std::string& s, const MemoryData& data, const std::string& functionName, int lineNumber) {
-	if (data.variables.find(s) == data.variables.end()) {
-		std::string msg = "Runtime Error: " + functionName +
-			" called with undeclared variable name. On line number " + 
-			std::to_string(lineNumber) + ".";
-		throw std::exception(msg.c_str());
-	}
+void ExceptionHelper::VariableIsDeclared(
+    const string& s, const MemoryData& data,
+    const string& functionName, int lineNumber) {
+    if (data.variables.find(s) == data.variables.end()) {
+        throw exception(("Runtime Error: " + functionName +
+            " called with undeclared variable name. On line number " +
+            to_string(lineNumber) + ".").c_str());
+    }
 }
 
-void ExceptionHelper::LabelIsDeclared(const std::string& s, const MemoryData& data, const std::string& functionName, int lineNumber) {
-	if (data.labels.find(s) == data.labels.end()) {
-		std::string msg = "Runtime Error: " + functionName + 
-			" called with undeclared label name. On line number " + 
-			std::to_string(lineNumber) + ".";
-		throw std::exception(msg.c_str());
-	}
+void ExceptionHelper::LabelIsDeclared(
+    const string& s, const MemoryData& data,
+    const string& functionName, int lineNumber) {
+    if (data.labels.find(s) == data.labels.end()) {
+        throw exception(("Runtime Error: " + functionName +
+            " called with undeclared label name. On line number " +
+            to_string(lineNumber) + ".").c_str());
+    }
 }
 
-int ExceptionHelper::SecureConvertToInt(const std::string& s, const std::string& functionName, int lineNumber) {
-	int number;
-	try {
-		number = std::stoi(s);
-	} catch (std::exception e) {
-		std::string msg = "Runtime Error: " + functionName + 
-			" called on a non number value. On line number " + 
-			std::to_string(lineNumber) + ".";
-		throw std::exception(msg.c_str());
-	}
-	return number;
+int ExceptionHelper::SecureConvertToInt(
+    const string& s, const string& functionName,
+    int lineNumber) {
+    try {
+        return std::stoi(s);
+    } catch (exception e) {
+        throw exception(("Runtime Error: " + functionName +
+            " called on a non number value. On line number " +
+            to_string(lineNumber) + ".").c_str());
+    }
 }
