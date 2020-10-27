@@ -15,13 +15,14 @@ int PushVariableToStack::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> PushVariableToStack::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> PushVariableToStack::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^\\$.*$");
 
 	if (std::regex_match(line, e)) {
-		line.erase(0, 1);
+		std::string string = line;
+		string.erase(0, 1);
 
-		return std::unique_ptr<Action>(new PushVariableToStack(line));
+		return std::unique_ptr<Action>(new PushVariableToStack(string));
 	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}

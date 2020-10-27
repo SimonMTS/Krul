@@ -34,9 +34,11 @@
 #include "NegateNumberFromStack.h"
 #include "End.h"
 
-std::vector<std::shared_ptr<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>> Action::matchFunctions{};
+std::vector<std::shared_ptr<std::unique_ptr<Action>(*)(MemoryData&, int, const std::string&)>> Action::matchFunctions{};
 
 void Action::Populate() {
+	if (Action::matchFunctions.size() != 0) return;
+
 	// Values & Types
 	PopulateSingle(PushNumberToStack::Match);
 	PopulateSingle(PushStringToStack::Match);
@@ -83,11 +85,11 @@ void Action::Populate() {
 	PopulateSingle(End::Match);
 }
 
-void Action::PopulateSingle(std::unique_ptr<Action>(matcher)(MemoryData&, int, std::string)) {
-	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, std::string)>(matcher));
+void Action::PopulateSingle(std::unique_ptr<Action>(matcher)(MemoryData&, int, const std::string&)) {
+	Action::matchFunctions.push_back(std::make_shared<std::unique_ptr<Action>(*)(MemoryData&, int, const std::string&)>(matcher));
 }
 
-std::unique_ptr<Action> Action::Match(MemoryData& data, int i, std::string line) {
+std::unique_ptr<Action> Action::Match(MemoryData& data, int i, const std::string& line) {
 
 	for (auto& matchFunction : Action::matchFunctions) {
 		auto a = (*(matchFunction.get()))(data, i, line);

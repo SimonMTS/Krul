@@ -14,12 +14,10 @@ int GoToLine::Do(MemoryData& data, int i) {
 	return label_value;
 }
 
-std::unique_ptr<Action> GoToLine::Match(MemoryData& data, int i, std::string line) {
+std::unique_ptr<Action> GoToLine::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^gto$");
 
 	if (std::regex_match(line, e)) {
-		line.erase(0, 1);
-
 		return std::unique_ptr<Action>(new GoToLine());
 	} else {
 		return std::unique_ptr<Action>(nullptr);

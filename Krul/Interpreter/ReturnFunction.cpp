@@ -14,12 +14,10 @@ int ReturnFunction::Do(MemoryData& data, int i) {
 	return callStack_value;
 }
 
-std::unique_ptr<Action> ReturnFunction::Match(MemoryData& data, int i, std::string line) {
+std::unique_ptr<Action> ReturnFunction::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^ret$");
 
 	if (std::regex_match(line, e)) {
-		line.erase(0, 1);
-
 		return std::unique_ptr<Action>(new ReturnFunction());
 	} else {
 		return std::unique_ptr<Action>(nullptr);

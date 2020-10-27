@@ -24,12 +24,10 @@ int GoToLineIfGreater::Do(MemoryData& data, int i) {
 	}
 }
 
-std::unique_ptr<Action> GoToLineIfGreater::Match(MemoryData& data, int i, std::string line) {
+std::unique_ptr<Action> GoToLineIfGreater::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^ggt$");
 
 	if (std::regex_match(line, e)) {
-		line.erase(0, 1);
-
 		return std::unique_ptr<Action>(new GoToLineIfGreater());
 	} else {
 		return std::unique_ptr<Action>(nullptr);

@@ -9,7 +9,7 @@ int DuplicateStringFromStack::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> DuplicateStringFromStack::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> DuplicateStringFromStack::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^dup$");
 
 	if (std::regex_match(line, e)) {

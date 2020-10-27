@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ExceptionHelper.h"
 
-void ExceptionHelper::StackContainsEnoughArguments(int n, MemoryData& data, std::string functionName, int lineNumber) {
+void ExceptionHelper::StackContainsEnoughArguments(int n, const MemoryData& data, const std::string& functionName, int lineNumber) {
 	if (data.stack.size() < n) {
 		std::string msg = "Runtime Error: " + functionName + 
 			" called on stack, with to few arguments. On line number " + 
@@ -10,7 +10,7 @@ void ExceptionHelper::StackContainsEnoughArguments(int n, MemoryData& data, std:
 	}
 }
 
-void ExceptionHelper::ValueIsLineNumberType(std::string s, std::string functionName, int lineNumber) {
+void ExceptionHelper::ValueIsLineNumberType(const std::string& s, const std::string& functionName, int lineNumber) {
 	std::regex e("^\\|\\d*$");
 
 	if (!std::regex_match(s, e)) {
@@ -21,7 +21,7 @@ void ExceptionHelper::ValueIsLineNumberType(std::string s, std::string functionN
 	}
 }
 
-void ExceptionHelper::VariableIsDeclared(std::string s, MemoryData& data, std::string functionName, int lineNumber) {
+void ExceptionHelper::VariableIsDeclared(const std::string& s, const MemoryData& data, const std::string& functionName, int lineNumber) {
 	if (data.variables.find(s) == data.variables.end()) {
 		std::string msg = "Runtime Error: " + functionName +
 			" called with undeclared variable name. On line number " + 
@@ -30,7 +30,7 @@ void ExceptionHelper::VariableIsDeclared(std::string s, MemoryData& data, std::s
 	}
 }
 
-void ExceptionHelper::LabelIsDeclared(std::string s, MemoryData& data, std::string functionName, int lineNumber) {
+void ExceptionHelper::LabelIsDeclared(const std::string& s, const MemoryData& data, const std::string& functionName, int lineNumber) {
 	if (data.labels.find(s) == data.labels.end()) {
 		std::string msg = "Runtime Error: " + functionName + 
 			" called with undeclared label name. On line number " + 
@@ -39,7 +39,7 @@ void ExceptionHelper::LabelIsDeclared(std::string s, MemoryData& data, std::stri
 	}
 }
 
-int ExceptionHelper::SecureConvertToInt(std::string s, std::string functionName, int lineNumber) {
+int ExceptionHelper::SecureConvertToInt(const std::string& s, const std::string& functionName, int lineNumber) {
 	int number;
 	try {
 		number = std::stoi(s);

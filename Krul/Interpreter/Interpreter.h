@@ -10,11 +10,11 @@ private:
 	std::vector<std::unique_ptr<Action>> actions;
 	MemoryData data;
 
-	void Parse(std::string code);
+	void Parse(const std::string& code);
 	void Execute();
 	
 public:
-	std::string Interpret(std::string code);
-	bool Ended();
+	std::string Interpret(const std::string& code);
+	bool Ended() const;
 };
 

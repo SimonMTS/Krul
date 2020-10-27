@@ -18,7 +18,7 @@ int DivideNumbersFromStack::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> DivideNumbersFromStack::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> DivideNumbersFromStack::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^div$");
 
 	if (std::regex_match(line, e)) {

@@ -14,7 +14,7 @@ int RotateStringFromStack::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> RotateStringFromStack::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> RotateStringFromStack::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^rot$");
 
 	if (std::regex_match(line, e)) {

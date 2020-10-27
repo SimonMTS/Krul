@@ -17,7 +17,7 @@ int MultiplyNumbersFromStack::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> MultiplyNumbersFromStack::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> MultiplyNumbersFromStack::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^mul$");
 
 	if (std::regex_match(line, e)) {

@@ -5,11 +5,11 @@
 
 class ExceptionHelper {
 public:
-    static void StackContainsEnoughArguments(int n, MemoryData& data, std::string functionName, int lineNumber);
-    static void ValueIsLineNumberType(std::string s, std::string functionName, int lineNumber);
+    static void StackContainsEnoughArguments(int n, const MemoryData& data, const std::string& functionName, int lineNumber);
+    static void ValueIsLineNumberType(const std::string& s, const std::string& functionName, int lineNumber);
 
-    static void VariableIsDeclared(std::string s, MemoryData& data, std::string functionName, int lineNumber);
-    static void LabelIsDeclared(std::string s, MemoryData& data, std::string functionName, int lineNumber);
+    static void VariableIsDeclared(const std::string& s, const MemoryData& data, const std::string& functionName, int lineNumber);
+    static void LabelIsDeclared(const std::string& s, const MemoryData& data, const std::string& functionName, int lineNumber);
 
-    static int SecureConvertToInt(std::string s, std::string functionName, int lineNumber);
+    static int SecureConvertToInt(const std::string& s, const std::string& functionName, int lineNumber);
 };

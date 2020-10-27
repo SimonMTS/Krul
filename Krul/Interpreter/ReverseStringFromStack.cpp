@@ -14,7 +14,7 @@ int ReverseStringFromStack::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> ReverseStringFromStack::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> ReverseStringFromStack::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^rev$");
 
 	if (std::regex_match(line, e)) {

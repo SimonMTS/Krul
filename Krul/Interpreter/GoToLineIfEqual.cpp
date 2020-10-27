@@ -24,12 +24,10 @@ int GoToLineIfEqual::Do(MemoryData& data, int i) {
 	}
 }
 
-std::unique_ptr<Action> GoToLineIfEqual::Match(MemoryData& data, int i, std::string line) {
+std::unique_ptr<Action> GoToLineIfEqual::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^geq$");
 
 	if (std::regex_match(line, e)) {
-		line.erase(0, 1);
-
 		return std::unique_ptr<Action>(new GoToLineIfEqual());
 	} else {
 		return std::unique_ptr<Action>(nullptr);

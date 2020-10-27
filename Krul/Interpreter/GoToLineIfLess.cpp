@@ -24,12 +24,10 @@ int GoToLineIfLess::Do(MemoryData& data, int i) {
 	}
 }
 
-std::unique_ptr<Action> GoToLineIfLess::Match(MemoryData& data, int i, std::string line) {
+std::unique_ptr<Action> GoToLineIfLess::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^glt$");
 
 	if (std::regex_match(line, e)) {
-		line.erase(0, 1);
-
 		return std::unique_ptr<Action>(new GoToLineIfLess());
 	} else {
 		return std::unique_ptr<Action>(nullptr);

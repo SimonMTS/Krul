@@ -14,7 +14,7 @@ int IncrementNumberFromStack::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> IncrementNumberFromStack::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> IncrementNumberFromStack::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^inc$");
 
 	if (std::regex_match(line, e)) {

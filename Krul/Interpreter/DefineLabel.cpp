@@ -11,15 +11,16 @@ int DefineLabel::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> DefineLabel::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> DefineLabel::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e(":.*$");
 
 	if (std::regex_match(line, e)) {
-		line.erase(0, 1);
+		std::string string = line;
+		string.erase(0, 1);
 
-		data.labels[line] = i;
+		data.labels[string] = i;
 
-		return std::unique_ptr<Action>(new DefineLabel(line));
+		return std::unique_ptr<Action>(new DefineLabel(string));
 	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}

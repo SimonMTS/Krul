@@ -17,7 +17,7 @@ int AddNumbersFromStack::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> AddNumbersFromStack::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> AddNumbersFromStack::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^add$");
 
 	if (std::regex_match(line, e)) {

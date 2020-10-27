@@ -14,7 +14,7 @@ int NegateNumberFromStack::Do(MemoryData& data, int i) {
 	return i;
 }
 
-std::unique_ptr<Action> NegateNumberFromStack::Match(MemoryData & data, int i, std::string line) {
+std::unique_ptr<Action> NegateNumberFromStack::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^neg$");
 
 	if (std::regex_match(line, e)) {

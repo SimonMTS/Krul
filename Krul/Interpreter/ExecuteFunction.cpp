@@ -18,12 +18,10 @@ int ExecuteFunction::Do(MemoryData& data, int i) {
 	return label_value;
 }
 
-std::unique_ptr<Action> ExecuteFunction::Match(MemoryData& data, int i, std::string line) {
+std::unique_ptr<Action> ExecuteFunction::Match(MemoryData& data, int i, const std::string& line) {
 	std::regex e("^fun$");
 
 	if (std::regex_match(line, e)) {
-		line.erase(0, 1);
-
 		return std::unique_ptr<Action>(new ExecuteFunction());
 	} else {
 		return std::unique_ptr<Action>(nullptr);
