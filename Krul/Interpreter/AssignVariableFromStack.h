@@ -1,8 +1,7 @@
 #pragma once
 #include "Action.h"
-class AssignVariableFromStack :
-    public Action
-{
+
+class AssignVariableFromStack : public Action {
 public:
     AssignVariableFromStack(std::string n);
     int Do(MemoryData&, int) override;

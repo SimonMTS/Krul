@@ -2,7 +2,9 @@
 #include "IncrementNumberFromStack.h"
 
 int IncrementNumberFromStack::Do(MemoryData& data, int i) {
-	int number = std::stoi(data.stack.back());
+	ExceptionHelper::StackContainsEnoughArguments(1, data, "IncrementNumberFromStack", i + 1);
+
+	int number = ExceptionHelper::SecureConvertToInt(data.stack.back(), "IncrementNumberFromStack", i + 1);
 	data.stack.pop_back();
 
 	int res = ++number;
@@ -17,8 +19,7 @@ std::unique_ptr<Action> IncrementNumberFromStack::Match(MemoryData & data, int i
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new IncrementNumberFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

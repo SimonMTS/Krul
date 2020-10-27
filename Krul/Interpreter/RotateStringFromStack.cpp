@@ -2,10 +2,7 @@
 #include "RotateStringFromStack.h"
 
 int RotateStringFromStack::Do(MemoryData& data, int i) {
-	if (data.stack.size() < 1) {
-		std::string msg = "Runtime Error: RotateStringFromStack called on empty stack. On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	ExceptionHelper::StackContainsEnoughArguments(1, data, "RotateStringFromStack", i + 1);
 
 	std::string string = data.stack.back();
 	data.stack.pop_back();
@@ -22,14 +19,12 @@ std::unique_ptr<Action> RotateStringFromStack::Match(MemoryData & data, int i, s
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new RotateStringFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }
 
 std::string RotateStringFromStack::rot13(std::string input) {
-
 	for (std::string::size_type len = input.length(), idx = 0; idx != len; ++idx) {
 		if (input[idx] >= 'a' && input[idx] <= 'm') {
 			input[idx] = input[idx] + 13;
@@ -43,5 +38,4 @@ std::string RotateStringFromStack::rot13(std::string input) {
 	}
 
 	return input;
-
 }

@@ -26,8 +26,7 @@ void Interpreter::Parse(std::string code) {
 			std::unique_ptr<Action> action{ Action::Match(data, i, line) };
 			actions.push_back(std::move(action));
 			i++;
-		}
-		catch (std::exception e) {
+		} catch (std::exception e) {
 			std::cout << e.what() << std::endl;
 			std::exit(1);
 		}

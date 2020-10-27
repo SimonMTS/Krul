@@ -1,9 +1,7 @@
 #pragma once
 #include "Action.h"
 
-class DefineLabel :
-    public Action
-{
+class DefineLabel : public Action {
 public:
     DefineLabel(std::string n);
     int Do(MemoryData&, int) override;

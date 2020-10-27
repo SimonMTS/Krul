@@ -2,7 +2,9 @@
 #include "NegateNumberFromStack.h"
 
 int NegateNumberFromStack::Do(MemoryData& data, int i) {
-	int number = std::stoi(data.stack.back());
+	ExceptionHelper::StackContainsEnoughArguments(1, data, "NegateNumberFromStack", i + 1);
+
+	int number = ExceptionHelper::SecureConvertToInt(data.stack.back(), "NegateNumberFromStack", i + 1);
 	data.stack.pop_back();
 
 	int res = -number;
@@ -17,8 +19,7 @@ std::unique_ptr<Action> NegateNumberFromStack::Match(MemoryData & data, int i, s
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new NegateNumberFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

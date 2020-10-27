@@ -2,10 +2,7 @@
 #include "GetLengthOfStringFromStack.h"
 
 int GetLengthOfStringFromStack::Do(MemoryData& data, int i) {
-	if (data.stack.size() < 1) {
-		std::string msg = "Runtime Error: GetLengthOfStringFromStack called on empty stack. On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	ExceptionHelper::StackContainsEnoughArguments(1, data, "GetLengthOfStringFromStack", i + 1);
 
 	std::string string = data.stack.back();
 	data.stack.pop_back();
@@ -22,8 +19,7 @@ std::unique_ptr<Action> GetLengthOfStringFromStack::Match(MemoryData & data, int
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new GetLengthOfStringFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

@@ -12,7 +12,6 @@ int PushStringToStack::Do(MemoryData& data, int i) {
 }
 
 std::unique_ptr<Action> PushStringToStack::Match(MemoryData & data, int i, std::string line) {
-
 	std::regex e("^\\\\.*$");
 
 	if (std::regex_match(line, e)) {
@@ -22,6 +21,5 @@ std::unique_ptr<Action> PushStringToStack::Match(MemoryData & data, int i, std::
 	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
-
 }
 

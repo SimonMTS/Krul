@@ -2,10 +2,7 @@
 #include "ConcatenateStringFromStack.h"
 
 int ConcatenateStringFromStack::Do(MemoryData& data, int i) {
-	if (data.stack.size() < 2) {
-		std::string msg = "Runtime Error: ConcatenateStringFromStack called on stack with only " + std::to_string(data.stack.size()) + " value. On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	ExceptionHelper::StackContainsEnoughArguments(2, data, "ConcatenateStringFromStack", i + 1);
 
 	std::string string1 = data.stack.back();
 	data.stack.pop_back();
@@ -25,8 +22,7 @@ std::unique_ptr<Action> ConcatenateStringFromStack::Match(MemoryData & data, int
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new ConcatenateStringFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

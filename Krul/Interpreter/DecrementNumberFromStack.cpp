@@ -2,13 +2,9 @@
 #include "DecrementNumberFromStack.h"
 
 int DecrementNumberFromStack::Do(MemoryData& data, int i) {
-	int number;
-	try {
-		number = std::stoi(data.stack.back());
-	} catch (std::exception e) {
-		std::string msg = "Runtime Error: DecrementNumberFromStack called on a non number value. On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	ExceptionHelper::StackContainsEnoughArguments(1, data, "DecrementNumberFromStack", i + 1);
+
+	int number = ExceptionHelper::SecureConvertToInt(data.stack.back(), "DecrementNumberFromStack", i + 1);
 
 	data.stack.pop_back();
 
@@ -24,8 +20,7 @@ std::unique_ptr<Action> DecrementNumberFromStack::Match(MemoryData & data, int i
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new DecrementNumberFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

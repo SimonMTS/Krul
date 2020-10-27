@@ -2,10 +2,12 @@
 #include "ModuloNumbersFromStack.h"
 
 int ModuloNumbersFromStack::Do(MemoryData& data, int i) {
-	int number1 = std::stoi(data.stack.back());
+	ExceptionHelper::StackContainsEnoughArguments(2, data, "ModuloNumbersFromStack", i + 1);
+
+	int number1 = ExceptionHelper::SecureConvertToInt(data.stack.back(), "ModuloNumbersFromStack", i + 1);
 	data.stack.pop_back();
 
-	int number2 = std::stoi(data.stack.back());
+	int number2 = ExceptionHelper::SecureConvertToInt(data.stack.back(), "ModuloNumbersFromStack", i + 1);
 	data.stack.pop_back();
 
 	int res = number2 % number1;
@@ -20,8 +22,7 @@ std::unique_ptr<Action> ModuloNumbersFromStack::Match(MemoryData & data, int i, 
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new ModuloNumbersFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

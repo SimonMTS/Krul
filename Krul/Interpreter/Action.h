@@ -4,6 +4,7 @@
 #include <iostream>
 #include <map>
 #include "MemoryData.h"
+#include "ExceptionHelper.h"
 
 class Action
 {

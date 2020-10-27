@@ -2,10 +2,7 @@
 #include "DuplicateStringFromStack.h"
 
 int DuplicateStringFromStack::Do(MemoryData& data, int i) {
-	if (data.stack.size() < 1) {
-		std::string msg = "Runtime Error: DuplicateStringFromStack called on empty stack. On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	ExceptionHelper::StackContainsEnoughArguments(1, data, "DuplicateStringFromStack", i + 1);
 
 	data.stack.push_back(data.stack.back());
 
@@ -17,8 +14,7 @@ std::unique_ptr<Action> DuplicateStringFromStack::Match(MemoryData & data, int i
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new DuplicateStringFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

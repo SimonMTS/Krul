@@ -165,6 +165,9 @@
     <ClInclude Include="End.h">
       <Filter>Header Files\Actions\Function&amp;EndActions</Filter>
     </ClInclude>
+    <ClInclude Include="ExceptionHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -274,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="End.cpp">
       <Filter>Source Files\Actions\Function&amp;EndActions</Filter>
+    </ClCompile>
+    <ClCompile Include="ExceptionHelper.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

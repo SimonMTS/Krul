@@ -2,19 +2,10 @@
 #include "IndexStringFromStack.h"
 
 int IndexStringFromStack::Do(MemoryData& data, int i) {
-	if (data.stack.size() < 2) {
-		std::string msg = "Runtime Error: IndexStringFromStack called on stack with only " + std::to_string(data.stack.size()) + " value. On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	ExceptionHelper::StackContainsEnoughArguments(2, data, "IndexStringFromStack", i + 1);
 	
-	int index;
-	try {
-		index = std::stoi(data.stack.back());
-		data.stack.pop_back();
-	} catch(std::exception e) {
-		std::string msg = "Runtime Error: IndexStringFromStack called with non number index. On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	int index = ExceptionHelper::SecureConvertToInt(data.stack.back(), "IndexStringFromStack", i + 1);
+	data.stack.pop_back();
 
 	std::string string = data.stack.back();
 	data.stack.pop_back();
@@ -32,8 +23,7 @@ std::unique_ptr<Action> IndexStringFromStack::Match(MemoryData & data, int i, st
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new IndexStringFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

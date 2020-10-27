@@ -2,23 +2,13 @@
 #include "SubstringStringFromStack.h"
 
 int SubstringStringFromStack::Do(MemoryData& data, int i) {
-	if (data.stack.size() < 3) {
-		std::string msg = "Runtime Error: SubstringStringFromStack called on stack with only " + std::to_string(data.stack.size()) + " value. On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	ExceptionHelper::StackContainsEnoughArguments(3, data, "SubstringStringFromStack", i + 1);
 
-	size_t to;
-	size_t from;
-	try {
-		to = std::stoi(data.stack.back());
-		data.stack.pop_back();
+	size_t to = ExceptionHelper::SecureConvertToInt(data.stack.back(), "SubstringStringFromStack", i + 1);
+	data.stack.pop_back();
 
-		from = std::stoi(data.stack.back());
-		data.stack.pop_back();
-	} catch(std::exception e) {
-		std::string msg = "Runtime Error: SubstringStringFromStack called with a non number To or From value. On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	size_t from = ExceptionHelper::SecureConvertToInt(data.stack.back(), "SubstringStringFromStack", i + 1);
+	data.stack.pop_back();
 
 	std::string value = data.stack.back();
 	data.stack.pop_back();

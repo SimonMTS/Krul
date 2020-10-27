@@ -97,8 +97,6 @@ std::unique_ptr<Action> Action::Match(MemoryData& data, int i, std::string line)
 	}
 
 	// throw, no match
-	std::string msg = "Parse Error: line (" + line + ") didn't match any action.";
-	throw std::exception(msg.c_str());
-	// return std::unique_ptr<Action>(nullptr);
+	throw std::exception(("Parse Error: line (" + line + ") didn't match any action.").c_str());
 
 }

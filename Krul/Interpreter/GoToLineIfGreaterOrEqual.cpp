@@ -15,23 +15,19 @@ int GoToLineIfGreaterOrEqual::Do(MemoryData& data, int i) {
 
 	if (value1 >= value2) {
 		return label_value;
-	}
-	else {
+	} else {
 		return i;
 	}
 }
 
 std::unique_ptr<Action> GoToLineIfGreaterOrEqual::Match(MemoryData& data, int i, std::string line) {
-
 	std::regex e("^gge$");
 
 	if (std::regex_match(line, e)) {
 		line.erase(0, 1);
 
 		return std::unique_ptr<Action>(new GoToLineIfGreaterOrEqual());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
-
 }

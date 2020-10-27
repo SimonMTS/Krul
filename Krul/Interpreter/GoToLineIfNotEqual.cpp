@@ -2,24 +2,14 @@
 #include "GoToLineIfNotEqual.h"
 
 int GoToLineIfNotEqual::Do(MemoryData& data, int i) {
+	ExceptionHelper::StackContainsEnoughArguments(3, data, "GoToLineIfNotEqual", i + 1);
+
 	std::string label_value_str = data.stack.back();
-
-	if (label_value_str.at(0) != '|') {
-		std::string msg = "Runtime Error: GoToLineIfNotEqual called on a non linenumber value (doesn't start with a pipe). On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
-
+	ExceptionHelper::ValueIsLineNumberType(label_value_str, "GoToLineIfNotEqual", i + 1);
 	data.stack.pop_back();
 
-	int label_value;
-	try {
-		label_value_str.erase(0, 1);
-		label_value = std::stoi(label_value_str);
-	}
-	catch (std::exception e) {
-		std::string msg = "Runtime Error: GoToLineIfNotEqual called on a non linenumber value (value after pipe is not a number). On line number " + std::to_string(i + 1) + ".";
-		throw std::exception(msg.c_str());
-	}
+	label_value_str.erase(0, 1);
+	int label_value = ExceptionHelper::SecureConvertToInt(label_value_str, "GoToLineIfNotEqual", i + 1);
 
 	std::string value1 = data.stack.back();
 	data.stack.pop_back();
@@ -35,16 +25,13 @@ int GoToLineIfNotEqual::Do(MemoryData& data, int i) {
 }
 
 std::unique_ptr<Action> GoToLineIfNotEqual::Match(MemoryData & data, int i, std::string line) {
-
 	std::regex e("^gne$");
 
 	if (std::regex_match(line, e)) {
 		line.erase(0, 1);
 
 		return std::unique_ptr<Action>(new GoToLineIfNotEqual());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
-
 }

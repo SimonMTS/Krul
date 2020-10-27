@@ -165,6 +165,7 @@
     <ClInclude Include="DivideNumbersFromStack.h" />
     <ClInclude Include="DuplicateStringFromStack.h" />
     <ClInclude Include="End.h" />
+    <ClInclude Include="ExceptionHelper.h" />
     <ClInclude Include="ExecuteFunction.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GetLengthOfStringFromStack.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="DivideNumbersFromStack.cpp" />
     <ClCompile Include="DuplicateStringFromStack.cpp" />
     <ClCompile Include="End.cpp" />
+    <ClCompile Include="ExceptionHelper.cpp" />
     <ClCompile Include="ExecuteFunction.cpp" />
     <ClCompile Include="GetLengthOfStringFromStack.cpp" />
     <ClCompile Include="GoToLine.cpp" />

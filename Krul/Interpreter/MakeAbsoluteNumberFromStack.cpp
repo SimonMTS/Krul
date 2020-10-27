@@ -2,7 +2,9 @@
 #include "MakeAbsoluteNumberFromStack.h"
 
 int MakeAbsoluteNumberFromStack::Do(MemoryData& data, int i) {
-	int number = std::stoi(data.stack.back());
+	ExceptionHelper::StackContainsEnoughArguments(1, data, "MakeAbsoluteNumberFromStack", i + 1);
+
+	int number = ExceptionHelper::SecureConvertToInt(data.stack.back(), "MakeAbsoluteNumberFromStack", i + 1);
 	data.stack.pop_back();
 
 	int res = std::abs(number);
@@ -17,8 +19,7 @@ std::unique_ptr<Action> MakeAbsoluteNumberFromStack::Match(MemoryData & data, in
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new MakeAbsoluteNumberFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

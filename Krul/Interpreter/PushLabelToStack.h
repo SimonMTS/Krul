@@ -1,8 +1,7 @@
 #pragma once
 #include "Action.h"
-class PushLabelToStack :
-    public Action
-{
+
+class PushLabelToStack : public Action {
 public:
     PushLabelToStack(std::string n);
     int Do(MemoryData&, int) override;

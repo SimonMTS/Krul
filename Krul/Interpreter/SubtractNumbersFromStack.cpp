@@ -2,10 +2,12 @@
 #include "SubtractNumbersFromStack.h"
 
 int SubtractNumbersFromStack::Do(MemoryData& data, int i) {
-	int number2 = std::stoi(data.stack.back());
+	ExceptionHelper::StackContainsEnoughArguments(2, data, "SubtractNumbersFromStack", i + 1);
+
+	int number2 = ExceptionHelper::SecureConvertToInt(data.stack.back(), "SubtractNumbersFromStack", i + 1);
 	data.stack.pop_back();
 
-	int number1 = std::stoi(data.stack.back());
+	int number1 = ExceptionHelper::SecureConvertToInt(data.stack.back(), "SubtractNumbersFromStack", i + 1);
 	data.stack.pop_back();
 
 	int res = number1 - number2;
@@ -20,8 +22,7 @@ std::unique_ptr<Action> SubtractNumbersFromStack::Match(MemoryData & data, int i
 
 	if (std::regex_match(line, e)) {
 		return std::unique_ptr<Action>(new SubtractNumbersFromStack());
-	}
-	else {
+	} else {
 		return std::unique_ptr<Action>(nullptr);
 	}
 }

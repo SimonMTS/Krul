@@ -1,8 +1,7 @@
 #pragma once
 #include "Action.h"
-class PushVariableToStack :
-    public Action
-{
+
+class PushVariableToStack : public Action {
 public:
     PushVariableToStack(std::string n);
     int Do(MemoryData&, int) override;
