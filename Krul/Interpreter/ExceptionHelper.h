@@ -9,6 +9,9 @@ public:
     static void StackContainsEnoughArguments(
         int n, const MemoryData& data,
         const string& functionName, int lineNumber);
+    static void CallStackContainsEnoughArguments(
+        int n, const MemoryData& data,
+        const string& functionName, int lineNumber);
     static void ValueIsLineNumberType(
         const string& s, const string& functionName,
         int lineNumber);

@@ -16,6 +16,16 @@ void ExceptionHelper::StackContainsEnoughArguments(
     }
 }
 
+void ExceptionHelper::CallStackContainsEnoughArguments(
+    int n, const MemoryData& data,
+    const string& functionName, int lineNumber) {
+    if (data.callStack.size() < n) {
+        throw exception(("Runtime Error: " + functionName +
+            " called on callStack, with to few arguments. On line number " +
+            to_string(lineNumber) + ".").c_str());
+    }
+}
+
 void ExceptionHelper::ValueIsLineNumberType(
     const string& s, const string& functionName,
     int lineNumber) {
@@ -23,8 +33,7 @@ void ExceptionHelper::ValueIsLineNumberType(
 
     if (!regex_match(s, expression)) {
         throw exception(("Runtime Error: " + functionName +
-            " called on a non linenumber value " +
-            "(doesn't start with a pipe). On line number " +
+            " called on a non linenumber value. On line number " +
             to_string(lineNumber) + ".").c_str());
     }
 }

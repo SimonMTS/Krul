@@ -3,10 +3,12 @@
 #include "GoToLine.h"
 
 int ReturnFunction::Do(MemoryData& data, int i) {
-    ExceptionHelper::StackContainsEnoughArguments(1, data, "ReturnFunction", i + 1);
+    ExceptionHelper::CallStackContainsEnoughArguments(1, data, "ReturnFunction", i + 1);
 
     std::string callStack_value_str = data.callStack.back();
     data.callStack.pop_back();
+
+    ExceptionHelper::ValueIsLineNumberType(callStack_value_str, "ReturnFunction", i + 1);
 
     callStack_value_str.erase(0, 1);
     int callStack_value = ExceptionHelper::SecureConvertToInt(callStack_value_str, "ReturnFunction", i + 1);
