@@ -4,10 +4,7 @@ using std::string;
 using std::unique_ptr;
 using std::function;
 
-CurlWrapper::CurlWrapper() {
-    req = unique_ptr<CURL, function<void(CURL*)>>(
-        curl_easy_init(), curl_easy_cleanup);
-}
+CurlWrapper::CurlWrapper() : req(curl_easy_init(), curl_easy_cleanup) { }
 
 size_t CurlWrapper::WriteCallback(
     void* contents, size_t size, size_t nmemb, void* userp) {

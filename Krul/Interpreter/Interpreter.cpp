@@ -28,7 +28,7 @@ void Interpreter::Parse(const string& code) {
             unique_ptr<Action> action{ Action::Match(data, i, line) };
             actions.push_back(std::move(action));
             i++;
-        } catch (exception e) {
+        } catch (const exception& e) {
             cout << e.what() << "\n";
             std::exit(1);
         }
@@ -41,7 +41,7 @@ void Interpreter::Execute() {
     for (int i = 0; i < len; i++) {
         try {
             i = (*((actions.at(i)).get())).Do(data, i);
-        } catch (exception e) {
+        } catch (const exception& e) {
             cout << e.what() << "\n";
             std::exit(1);
         }

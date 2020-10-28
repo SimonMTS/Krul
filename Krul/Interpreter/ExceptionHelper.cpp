@@ -54,7 +54,7 @@ int ExceptionHelper::SecureConvertToInt(
     int lineNumber) {
     try {
         return std::stoi(s);
-    } catch (exception e) {
+    } catch (const exception& e) {
         throw exception(("Runtime Error: " + functionName +
             " called on a non number value. On line number " +
             to_string(lineNumber) + ".").c_str());
